@@ -3,13 +3,13 @@ function config = set_config(domain)
 config = [];
 
 % Location of your CUB_200_2011 directory
-config.cub_root = '/scail/u/jkrause/temp/cub/CUB_200_2011';
+config.cub_root = '/scail/scratch/u/jkrause/temp/cub/CUB_200_2011';
 
 % Segmentation directory for CUB. Only necessary if evaluating segmentation.
-config.cub_seg_dir = '/scail/u/jkrause/temp/cub/segmentations';
+config.cub_seg_dir = '/scail/scratch/u/jkrause/temp/cub/segmentations';
 
 % Location of the directory containing cars_annos.mat
-config.car_root = '/scail/u/jkrause/temp/car/';
+config.car_root = '/scail/scratch/u/jkrause/temp/car/';
 
 
 % Location of caffe install.
@@ -22,11 +22,17 @@ config.rcnn_root = '/home/jkrause/cvpr15_rcnn';
 config.gpu_num = 3;
 
 
-% Don't touch all of these things
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch anything below this line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 config.cnn_padding = 16;
 config.ilsvrc_mean_loc = fullfile(config.caffe_root, 'matlab', 'caffe', 'ilsvrc_2012_mean.mat');
 config.caffenet_deploy_loc = fullfile(config.caffe_root, 'models', 'bvlc_reference_caffenet', 'deploy.prototxt');
 config.caffenet_model_loc = fullfile(config.caffe_root, 'models', 'bvlc_reference_caffenet', 'bvlc_reference_caffenet.caffemodel');
+config.cnn_input_size = 256;
 
 
 % Pose graph/matching parameters
@@ -49,6 +55,7 @@ if matlabpool('size') == 0
   matlabpool('open');
 end
 
+config.domain = domain;
 config.im_base = config.(sprintf('im_base_%s', domain));
 config.image_fname = fullfile(config.root, 'processed', 'data', sprintf('%s_images.mat', domain));
 config.train_image_fname = fullfile(config.root, 'processed', 'data', sprintf('%s_images_train.mat', domain));
@@ -64,3 +71,4 @@ config.matching_im_out_dir = fullfile(config.root, 'processed', 'posegraph', dom
 config.alignment_fname = fullfile(config.root, 'processed', 'posegraph', domain, 'alignments.mat');
 config.propagate_save_fname = fullfile(config.root, 'processed', 'posegraph', sprintf('keypoints_%s.mat', domain));
 config.tight_part_fname = fullfile(config.root, 'processed', 'posegraph', sprintf('regions_%s.mat', domain));
+config.ft_patch_folder = fullfile(config.root, 'processed', 'cnn', 'data', domain);

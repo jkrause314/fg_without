@@ -1,3 +1,6 @@
+
+
+
 -download/install caffe
   testing with rc2
   get caffenet
@@ -22,3 +25,9 @@ assignmentoptimal
 sc code adapted form serge belongie
 
 compile coseg code
+
+remove /scail/scratch/u/jkrause/cvpr15_release/code/thirdparty/matlab_bgl/test/assert.m
+get ./data/caffe_nets/finetune_voc_2007_trainval_iter_70k by running ./data/fetch_models.sh
+
+replace rcnn_load_model with our rcnn_load_model
+replace rcnn_cache_pool5_features.m
