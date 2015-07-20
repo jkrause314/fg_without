@@ -31,3 +31,9 @@ get ./data/caffe_nets/finetune_voc_2007_trainval_iter_70k by running ./data/fetc
 
 replace rcnn_load_model with our rcnn_load_model
 replace rcnn_cache_pool5_features.m
+
+need VGGNet
+./scripts/download_model_from_gist.sh 3785162f95cd2d5fee77
+wget -P models/3785162f95cd2d5fee77/ http://www.robots.ox.ac.uk/~vgg/software/very_deep/caffe/VGG_ILSVRC_19_layers.caffemodel
+
+liblinear dense float, give them a link/script to do it

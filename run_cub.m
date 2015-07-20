@@ -20,9 +20,8 @@ run_matching(config);
 part_propagate(config);
 tighten_parts(config);
 
-% STOPPED RIGHT HERE.
-% Train an r-cnn
-%my_run_rcnn(config);
+my_run_rcnn(config);
 
 vgg_finetune(config);
-%
+
+run_recognition(config);

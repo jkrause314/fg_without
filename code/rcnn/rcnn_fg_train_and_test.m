@@ -1,8 +1,15 @@
 function [res_test, res_train] = rcnn_fg_train_and_test(config)
 % Runs an experiment that trains an R-CNN model and tests it.
 
+done_fname = fullfile(config.rcnn_result_folder, 'base_rcnn.done');
+if exist(done_fname, 'file')
+  fprintf('Base R-CNN already trained!\n');
+  return;
+end
+
 layer = 6; % 5=pool5,6=fc6, 7=fc7
 gpu_num = config.gpu_num;
+
 
 % -------------------- CONFIG --------------------
 cache_name   = sprintf('%s_cache', config.domain);
@@ -29,10 +36,16 @@ caffe('set_device', gpu_num);
       'crop_padding',    crop_padding);
 
 if k_folds > 0
-  res_train = rcnn_test(rcnn_k_fold_model, imdb_train, '', cachesub_suffix);
+  res_train = my_rcnn_test(rcnn_k_fold_model, imdb_train, '', cachesub_suffix);
 else
   res_train = [];
 end
 
-%res_test = rcnn_test(rcnn_model, imdb_train, '');
-res_test = rcnn_test(rcnn_model, imdb_test, '');
+%res_test = my_rcnn_test(rcnn_model, imdb_train, '');
+res_test = my_rcnn_test(rcnn_model, imdb_test, '');
+
+[pardir, ~, ~] = fileparts(done_fname);
+if ~exist(pardir, 'dir')
+  mkdir(pardir);
+  fclose(fopen(done_fname, 'w'));
+end

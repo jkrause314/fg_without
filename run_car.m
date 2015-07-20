@@ -13,6 +13,8 @@ run_matching(config);
 part_propagate(config);
 tighten_parts(config);
 
-%my_run_rcnn(config);
+my_run_rcnn(config);
 
 vgg_finetune(config);
+
+run_recognition(config);

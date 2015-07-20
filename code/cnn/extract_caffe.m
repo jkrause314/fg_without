@@ -65,7 +65,9 @@ if isempty(IMAGE_MEAN)
   IMAGE_MEAN = d.image_mean;
 end
 IMAGE_DIM = 256;
-if strcmp(options.net, 'vggnet') || strcmp(options.net, 'vggnet-fine-tuned')
+
+% Hack to get input dims correct and a warning to anyone who changes the net.
+if strcmp(options.net, 'vgg') || strcmp(options.net, 'vgg-ft')
   CROPPED_DIM = 224;
 else
   CROPPED_DIM = 227;
