@@ -71,7 +71,7 @@ elseif strcmp(split, 'test')
 
   for i = 1:numel(images)
     num_dets = size(det_bboxes{1}{i}, 1);
-    assert(num_dets == 1);
+    assert(num_dets <= 1);
     to_extract = zeros(1+num_parts, 4);
     % If no detection, set everything to whole image
     if isempty(det_bboxes{1}{i})

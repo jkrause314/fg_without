@@ -21,7 +21,7 @@ config.rcnn_root = '/home/jkrause/cvpr15_rcnn';
 config.liblinear_dir = '/afs/cs/u/jkrause/scr/software/liblinear-1.5-dense-float';
 
 % Which gpu to use (0-indexed)
-config.gpu_num = 5;
+config.gpu_num = 2;
 
 
 
@@ -42,6 +42,9 @@ config.part_context = .25;
 config.cnn_padding = 16;
 config.svm_folds = 5;
 config.svm_cs = 10.^[-6:-3];
+config.dcop_solver = 5;
+config.dcop_cs = 10.^linspace(-10, -2, 81);
+config.dcop_folds = 10;
 
 
 % Add some paths, set up the matlab pool
