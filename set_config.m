@@ -86,3 +86,5 @@ config.rcnn_result_folder = fullfile(config.root, 'processed', 'rcnn', domain);
 config.rcnn_result_fname = fullfile(config.rcnn_result_folder, 'final_detections.mat');
 config.cnn_ft_dir = fullfile(config.root, 'processed', 'cnn', 'train', domain);
 config.svm_out_dir = fullfile(config.root, 'processed', 'svms', domain);
+config.dcop_fname = fullfile(config.svm_out_dir, 'dcop.mat');
+config.test_result_fname = fullfile(config.svm_out_dir, 'test_results.mat');

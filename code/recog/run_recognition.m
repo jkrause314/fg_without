@@ -10,12 +10,14 @@ extract_part_feats(config, 'train', 'vgg');
 extract_part_feats(config, 'train', 'vgg-ft');
 extract_part_feats(config, 'test', 'vgg-ft');
 
-% TODO
-%% Train cross-validated SVMs on the non-fine-tuned features
-%train_part_svms(config, 'vgg', config.svm_folds)
-%
-%% Train SVMs on the fine-tuned features
-%train_part_svms(config, 'vgg-ft', config.svm_folds)
+% Train cross-validated SVMs on the non-fine-tuned features
+train_part_svms(config, 'vgg', config.svm_folds)
+
+% Train SVMs on the fine-tuned features
+train_part_svms(config, 'vgg-ft', config.svm_folds)
 
 % Learn the discriminative combination of parts
+train_oneclass(config);
+
 % Apply the DCoP using the fine-tuned features
+eval_oneclass(config);

@@ -57,7 +57,6 @@ parfor part_ind = 1:num_parts+1
   if ~exist(pardir, 'dir')
     mkdir(pardir);
   end
-  %save(save_fname, 'models', 'cv_accs', 'cv_dec_vals', 'll_options', 'mult_factor', 'net', '-v7.3');
   myparsave(save_fname, models, cv_accs, cv_dec_vals, ll_options, mult_factor, net);
 end
 fclose(fopen(done_fname, 'w'));

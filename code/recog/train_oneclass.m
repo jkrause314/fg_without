@@ -7,8 +7,6 @@ if exist(done_fname, 'file')
   return;
 end
 
-save_fname = fullfile(config.svm_out_dir, 'dcop.mat');
-
 num_parts = config.final_part_pool_size + 1;
 
 cv_dec_vals = cell(1, num_parts);
@@ -96,4 +94,5 @@ end
 fprintf('\n\nBest:\n');
 fprintf('C: %g, cv acc: %g, test acc: %g\n', c_vals(best_c_ind), cv_accs(best_c_ind));
 
-save(save_fname, 'cv_accs', 'models');
+save(config.dcop_fname, 'cv_accs', 'models');
+fclose(fopen(done_fname, 'w'));
