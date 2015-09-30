@@ -15,6 +15,10 @@ http://caffe.berkeleyvision.org/
 We'll be using caffe rc2, which you can download at
 https://github.com/BVLC/caffe/archive/rc2.zip
 
+Our code uses a slightly-modified version of matcaffe, which is included
+under code/cnn/matcaffe.cpp. Please copy that file into the 'matlab/caffe'
+folder within your caffe directory before compiling matcaffe.
+
 Note: caffe has a bunch of its own pre-requisites and can be a pain to install
 if you're missing them or don't have a gpu-enabled machine. Good luck.
 
